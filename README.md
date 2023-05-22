@@ -1,2 +1,2 @@
-# weather-forecast-dashboard
-5 day weather forecast 
+# Weather Forecast Dashboard
+5 day weather forecast - Jayné M. Valverde
