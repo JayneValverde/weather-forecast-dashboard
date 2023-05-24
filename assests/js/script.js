@@ -30,7 +30,7 @@ fetch(apiUrl)
             console.log(response);
             response.json().then(function (data) {
                 console.log(data);
-                displayForecast(data, city);
+                displayForecast(data, cityname);
             });
         } else {
             alert('Error: ' + response.statusText);
@@ -41,12 +41,22 @@ fetch(apiUrl)
     });
 };
 
+
+
+// move to the top? 
 // ------------------
 displayForecast = function (forecast, searchTerm) {
-    if(forecast.length === 0) {
+    if(forecast.document === 0) {
         fcContainerEl.textContent = "No Weather Found";
         return;
     }
+
+    var cityEl = document.createElement('p');
+    cityEl.textContent = forecast.name; 
+    fcContainerEl.append(cityEl);
+
+    var weatherData = forecast[0]
+
 }
 
 fcSearchTerm.textContent = fcSearchTerm;
