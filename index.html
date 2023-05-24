@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- google font api -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- style sheet -->
+    <link rel="stylesheet" href="./assests/css/style.css">
+    <title>Weather Forecast</title>
+</head>
+
+<body>
+    <header class="flex-column min-100-vh justify-space-around">
+        <h1 class="app-title"><i class="fas fa-cloud-moon-rain"></i> Weather Forecast </h1>
+        <p>Search for your city and find your 5 day weather forecast!</p>
+    </header>
+
+    <main class="flex-row justify-space-around">
+        <div class="col-12 col-md-4">
+            <!-- search by city card -->
+            <div class="card">
+                <h3 class="card-header text-uppercase">Search by City</h3>
+                <form id="user-form" class="card-body">
+                    <label class="form-label" for="cityname">City Name</label>
+                    <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
+                    <button type="submit" class="btn">Check Weather</button>
+                </form>
+            </div>
+            <!-- make empty cards for 5-day forecast -->
+            
+            <!-- make empty cards for saved searches? -->
+        </div>
+
+        <div class="col-12 col-md-8">
+            <h2 class="subtitle">Showing the current forcast for: 
+            <span id="forecast-search-term"> </span>
+            </h2>
+            <div id="forecast-container" class="list-group"> </div>
+        </div>
+
+    </main>
+    
+    <script src="assests/js/script.js"></script>
+</body>
+</html>
