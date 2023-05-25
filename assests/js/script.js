@@ -78,7 +78,7 @@ var fiveAPI = function(cityname) {
     var {lat} = cityname;
     var {lon} = cityname;
 
-    var fiveApiUrl = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={APIKEY}`;
+    var fiveApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
 
 fetch(fiveApiUrl)
     .then(function (response) {
