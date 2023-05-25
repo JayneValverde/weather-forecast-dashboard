@@ -6,6 +6,7 @@ var cityInputEl = document.querySelector('#cityname');
 var fcContainerEl = document.querySelector('#forecast-container');
 var fcSearchTerm = document.querySelector('#forecast-search-term');
 
+// Event handler for city submition
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
@@ -13,15 +14,16 @@ var formSubmitHandler = function (event) {
     console.log(cityname);
 
     if (cityname) {
-        getForecast(cityname);
+        getLocation(cityname);
 
         fcContainerEl.textContent = '';
         cityInputEl.value = '';
     }
 };
 console.log(`This will show the API key: ${APIKEY}`)
-// Weather API funciton?
-var getForecast = function(cityname) {
+
+// GEOLOCATION API 
+var getLocation = function(cityname) {
     var apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&limit=${LIMIT}&appid=${APIKEY}`;
 
 fetch(apiUrl)
@@ -30,7 +32,7 @@ fetch(apiUrl)
             console.log(response);
             response.json().then(function (data) {
                 console.log(data);
-                displayForecast(data, cityname);
+                displayLocation(data, cityname);
             });
         } else {
             alert('Error: ' + response.statusText);
@@ -41,25 +43,39 @@ fetch(apiUrl)
     });
 };
 
+// collected information from API object 
+// need data to call [lat]&[lon]
 
+// CURRENT & FORECAST WEATHER DATA
+var currForecast = function(cityname) {
+    var currApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
 
-// move to the top? 
-// ------------------
-displayForecast = function (forecast, searchTerm) {
-    if(forecast.document === 0) {
-        fcContainerEl.textContent = "No Weather Found";
-        return;
-    }
-
-    var cityEl = document.createElement('p');
-    cityEl.textContent = forecast.name; 
-    fcContainerEl.append(cityEl);
-
-    var weatherData = forecast[0]
-
+fetch(currApiUrl)
+    .then(function (response) {
+        if (response.ok) {
+            console.log(response);
+            response.json().then(function (data) {
+                console.log(data);
+                displayForcast(data, cityname);
+            });
+        }
+    });
 }
 
-fcSearchTerm.textContent = fcSearchTerm;
+// Display city location 
+var displayLocation = function (location, searchTerm) {
+    if(!location) {
+        fcContainerEl.textContent = "No Weather Found";
+        return;
+        fcSearchTerm.textContent = fcSearchTerm;
+    } else {
+        var cityEl = document.createElement('p');
+        cityEl.textContent = location[0].name; 
+        fcContainerEl.append(cityEl);
+    }
+}
+
+
 
 
 
