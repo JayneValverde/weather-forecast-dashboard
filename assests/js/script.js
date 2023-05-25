@@ -6,6 +6,11 @@ var cityInputEl = document.querySelector('#cityname');
 var fcContainerEl = document.querySelector('#forecast-container');
 var fcSearchTerm = document.querySelector('#forecast-search-term');
 
+var temp = document.querySelector('#Temperature');
+var wind = document.querySelector('#Wind');
+var humid = document.querySelector('#Humidity');
+
+
 // Event handler for city submition
 var formSubmitHandler = function (event) {
     event.preventDefault();
@@ -52,7 +57,7 @@ var currForecast = function(cityname) {
     var {lat} = cityname;
     var {lon} = cityname;
 
-    var currApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
+    var currApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
 
 fetch(currApiUrl)
     .then(function (response) {
@@ -60,7 +65,12 @@ fetch(currApiUrl)
             console.log(response);
             response.json().then(function (data) {
                 console.log(data);
-                displayForcast(data, cityname);
+                // displayForcast(data, cityname);
+
+                // var temP = data['main']['temp']
+                // var wndspd = data['wind']['speed']
+                // var humid = data['main']['humidity']
+
             });
         }
     });
@@ -76,6 +86,7 @@ var displayLocation = function (location, searchTerm) {
         var cityEl = document.createElement('p');
         cityEl.textContent = location[0].name; 
         fcContainerEl.append(cityEl);
+        
     }
 }
 
