@@ -33,6 +33,7 @@ fetch(apiUrl)
             response.json().then(function (data) {
                 console.log(data);
                 displayLocation(data, cityname);
+                currForecast(data[0]);
             });
         } else {
             alert('Error: ' + response.statusText);
@@ -48,7 +49,10 @@ fetch(apiUrl)
 
 // CURRENT & FORECAST WEATHER DATA
 var currForecast = function(cityname) {
-    var currApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
+    var {lat} = cityname;
+    var {lon} = cityname;
+
+    var currApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
 
 fetch(currApiUrl)
     .then(function (response) {
