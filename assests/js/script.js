@@ -6,9 +6,9 @@ var cityInputEl = document.querySelector('#cityname');
 var fcContainerEl = document.querySelector('#forecast-container');
 var fcSearchTerm = document.querySelector('#forecast-search-term');
 
-var temp = document.querySelector('#Temperature');
-var wind = document.querySelector('#Wind');
-var humid = document.querySelector('#Humidity');
+// var tempEl = document.querySelector('#Temperature');
+// var windEl = document.querySelector('#Wind');
+// var humidEl = document.querySelector('#Humidity');
 
 
 // Event handler for city submition
@@ -53,9 +53,9 @@ fetch(apiUrl)
 // need data to call [lat]&[lon]
 
 // CURRENT & FORECAST WEATHER DATA
-var currForecast = function(cityname) {
-    var {lat} = cityname;
-    var {lon} = cityname;
+var currForecast = function(cityName) {
+    var {lat} = cityName;
+    var {lon} = cityName;
 
     var currApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
 
@@ -65,16 +65,24 @@ fetch(currApiUrl)
             console.log(response);
             response.json().then(function (data) {
                 console.log(data);
-                // displayForcast(data, cityname);
-
-                // var temP = data['main']['temp']
-                // var wndspd = data['wind']['speed']
-                // var humid = data['main']['humidity']
-
+                displayForecast(data, cityName);
+            
             });
         }
     });
 }
+
+// Display forecast
+var displayForecast = function (forecast, fcSearchTerm) {
+    // tempEl.innerHTML = forecast[0].name; 
+    var tempEl = document.createElement('p');
+    
+    // NEED HELP FINDING RIGHT LOCATION DEFINITION 
+    tempEl.textContent = forecast[main];
+    fcContainerEl.append(tempEl);
+}
+
+
 
 // Display city location 
 var displayLocation = function (location, searchTerm) {
