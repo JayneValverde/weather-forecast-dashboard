@@ -6,9 +6,9 @@ var cityInputEl = document.querySelector('#cityname');
 var fcContainerEl = document.querySelector('#forecast-container');
 var fcSearchTerm = document.querySelector('#forecast-search-term');
 
-// var tempEl = document.querySelector('#Temperature');
-// var windEl = document.querySelector('#Wind');
-// var humidEl = document.querySelector('#Humidity');
+var tempEl = document.querySelector('#Temperature');
+var windEl = document.querySelector('#Wind');
+var humidEl = document.querySelector('#Humidity');
 
 
 // Event handler for city submition
@@ -53,11 +53,11 @@ fetch(apiUrl)
 // need data to call [lat]&[lon]
 
 // CURRENT & FORECAST WEATHER DATA
-var currForecast = function(cityName) {
-    var {lat} = cityName;
-    var {lon} = cityName;
+var currForecast = function(cityname) {
+    var {lat} = cityname;
+    var {lon} = cityname;
 
-    var currApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
+    var currApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=imperial`;
 
 fetch(currApiUrl)
     .then(function (response) {
@@ -65,8 +65,28 @@ fetch(currApiUrl)
             console.log(response);
             response.json().then(function (data) {
                 console.log(data);
-                displayForecast(data, cityName);
+                displayForecast(data, cityname);
+                
             
+            });
+        }
+    });
+}
+
+// 5 DAY FORECAST API!!!!
+var fiveAPI = function(cityname) {
+    var {lat} = cityname;
+    var {lon} = cityname;
+
+    var fiveApiUrl = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={APIKEY}`;
+
+fetch(fiveApiUrl)
+    .then(function (response) {
+        if (response.ok) {
+            console.log(response);
+            response.json().then(function (data) {
+                console.log(data);
+                displayWeek(data, cityname);
             });
         }
     });
@@ -74,12 +94,14 @@ fetch(currApiUrl)
 
 // Display forecast
 var displayForecast = function (forecast, fcSearchTerm) {
-    // tempEl.innerHTML = forecast[0].name; 
-    var tempEl = document.createElement('p');
+    tempEl = document.createElement('p');
+    windEl = document.createElement('p');
+    tempEl.textContent = "Temperature: " + forecast.main.temp + " F";
+    windEl.textContent = "Wind Speed: " + forecast.wind.speed + " Mph";
+    // console.log(forecast);
+    fcContainerEl.append(tempEl)
+    fcContainerEl.append(windEl);
     
-    // NEED HELP FINDING RIGHT LOCATION DEFINITION 
-    tempEl.textContent = forecast[main];
-    fcContainerEl.append(tempEl);
 }
 
 
