@@ -28,102 +28,139 @@ var formSubmitHandler = function (event) {
 console.log(`This will show the API key: ${APIKEY}`)
 
 // GEOLOCATION API 
-var getLocation = function(cityname) {
+var getLocation = function (cityname) {
     var apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&limit=${LIMIT}&appid=${APIKEY}`;
 
-fetch(apiUrl)
-    .then(function (response) {
-        if (response.ok) {
-            console.log(response);
-            response.json().then(function (data) {
-                console.log(data);
-                displayLocation(data, cityname);
-                currForecast(data[0]);
-            });
-        } else {
-            alert('Error: ' + response.statusText);
-        }
-    })
-    .catch(function (error) {
-        alert('Unable to connect to acess location');
-    });
+    fetch(apiUrl)
+        .then(function (response) {
+            if (response.ok) {
+                console.log(response);
+                response.json().then(function (data) {
+                    console.log(data);
+                    displayLocation(data, cityname);
+                    currForecast(data[0]);
+                    weekAPI(data[0]);
+                });
+            } else {
+                alert('Error: ' + response.statusText);
+            }
+        })
+        .catch(function (error) {
+            alert('Unable to connect to acess location');
+        });
 };
 
-// collected information from API object 
-// need data to call [lat]&[lon]
 
 // CURRENT & FORECAST WEATHER DATA
-var currForecast = function(cityname) {
-    var {lat} = cityname;
-    var {lon} = cityname;
+var currForecast = function (cityname) {
+    var { lat } = cityname;
+    var { lon } = cityname;
 
     var currApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=imperial`;
 
-fetch(currApiUrl)
-    .then(function (response) {
-        if (response.ok) {
-            console.log(response);
-            response.json().then(function (data) {
-                console.log(data);
-                displayForecast(data, cityname);
-                
-            
-            });
-        }
-    });
+    fetch(currApiUrl)
+        .then(function (response) {
+            if (response.ok) {
+                console.log(response);
+                response.json().then(function (data) {
+                    console.log(data);
+                    displayForecast(data, cityname);
+
+
+                });
+            }
+        });
 }
+
 
 // 5 DAY FORECAST API!!!!
-var fiveAPI = function(cityname) {
-    var {lat} = cityname;
-    var {lon} = cityname;
+var weekAPI = function (cityname) {
+    var { lat } = cityname;
+    var { lon } = cityname;
 
-    var fiveApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
+    var weekApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}`;
 
-fetch(fiveApiUrl)
-    .then(function (response) {
-        if (response.ok) {
-            console.log(response);
-            response.json().then(function (data) {
-                console.log(data);
-                displayWeek(data, cityname);
-            });
+    fetch(weekApiUrl)
+        .then(function (response) {
+            if (response.ok) {
+                console.log(response);
+                response.json().then(function (data) {
+                    console.log(data);
+                    displayweekData(data, cityname);
+                });
+            }
+        });
+}
+
+    var displayweekData = function (forecastData, fcSearchTerm) {
+        for (i = 4; i < forecastData.list.length; i=i+4) {
+            
+            var forecastContainer = document.getElementById("weather-card")
+            
+            // var date = document.querySelector("date-" + (i + 1));
+            // var temp = document.getElementById("Temp-" + (i + 1));
+            // var wind = document.getElementById("Wind-" + (i + 1));
+            // var humidity = document.getElementById("Humidity-" + (i + 1));
+            // var Week = [i];
+
+            // date.textContent = new Date(weatherData.dt * 1000).toLocaleDateString();
+            // temp.textContent ="Temperature: " + temperatureConverter(weatherData.main.temp) + "°F"
+            // wind.textContent = "Wind: " + '${wind.speed}'
+            // humidity.textContent = "Humidity: " + list.main.humidity;
+            // document.getElementById("weather-card").remove.Atrribute("style");
+
+            var date = document.createElement("h3");
+            var temperature = document.createElement("h4");
+            var humid = document.createElement("h5");
+            var winSpeed = document.createElement("h6");  
+            
+            date.textContent = forecastData.list[i].dt.txt;
+            temperature.textContent = forecastData.list[i].main.temp ;
+            humid.textContent = forecastData.list[i].main.humidity + "%";
+            winSpeed.textContent = forecastData.list[i].wind.speed + "mph";
+
+            forecastContainer.append(date);
+            forecastContainer.append(temperature);
+            forecastContainer.append(humid);
+            forecastContainer.append(winSpeed);
         }
-    });
-}
-
-// Display forecast
-var displayForecast = function (forecast, fcSearchTerm) {
-    tempEl = document.createElement('p');
-    windEl = document.createElement('p');
-    tempEl.textContent = "Temperature: " + forecast.main.temp + " F";
-    windEl.textContent = "Wind Speed: " + forecast.wind.speed + " Mph";
-    // console.log(forecast);
-    fcContainerEl.append(tempEl)
-    fcContainerEl.append(windEl);
-    
-}
+    }               
+    // Display Five Day 
+    // var displayWeek = function (week, fcSearchTerm) {
 
 
+    // }
 
-// Display city location 
-var displayLocation = function (location, searchTerm) {
-    if(!location) {
-        fcContainerEl.textContent = "No Weather Found";
-        return;
-        fcSearchTerm.textContent = fcSearchTerm;
-    } else {
-        var cityEl = document.createElement('p');
-        cityEl.textContent = location[0].name; 
-        fcContainerEl.append(cityEl);
-        
+    // Display forecast
+    var displayForecast = function (forecast, fcSearchTerm) {
+        tempEl = document.createElement('p');
+        windEl = document.createElement('p');
+        tempEl.textContent = "Temperature: " + forecast.main.temp, + " F";
+        windEl.textContent = "Wind Speed: " + forecast.wind.speed, + " Mph";
+        // console.log(forecast);
+        fcContainerEl.append(tempEl);
+        fcContainerEl.append(windEl);
+
     }
-}
+
+    // Display city location 
+    var displayLocation = function (location, searchTerm) {
+        if (!location) {
+            fcContainerEl.textContent = "No Weather Found";
+            return;
+            fcSearchTerm.textContent = fcSearchTerm;
+        } else {
+            var cityEl = document.createElement('p');
+            cityEl.textContent = location[0].name;
+            fcContainerEl.append(cityEl);
+
+        }
+    }
 
 
 
 
 
 
-userFormEl.addEventListener('submit', formSubmitHandler);
+    userFormEl.addEventListener('submit', formSubmitHandler);
     // console.log('button cicked');

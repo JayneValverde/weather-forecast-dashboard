@@ -88,6 +88,13 @@ h6 {
     border-radius: var(--border-radius);
 }
 
+
+.weather-card {
+    display:flex;
+    background-color: var(--tertiary);
+}
+
+
 .card-header {
     color: var(--primary);
     background-color: var(--dark);
