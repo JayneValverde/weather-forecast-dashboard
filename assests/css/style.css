@@ -25,13 +25,19 @@ h1,
 h2,
 h3,
 h4,
-h5,
-h6 {
+h5 {
     font-weight: 700;
     margin: 0;
     color: var(--dark);
     line-height: 1.5;
     /* font-size: 16px; */
+}
+
+h6 {
+    font-weight: 400;
+    margin: 0;
+    color: var(--dark);
+    line-height: 1.5;
 }
 
 .btn {
@@ -142,6 +148,10 @@ h6 {
     text-transform: uppercase;
 }
 
+.row {
+    padding-left:340px;
+}
+
 /* FLEX CONTENT */
 .flex-row {
     display: flex;
@@ -150,15 +160,15 @@ h6 {
 
 .flex-column {
     display: flex;
-    margin: 20px 20px 0px 20px;
+    margin: 20px 20px 20px 20px;
     flex-direction: column;
     flex-wrap: wrap;
 
 }
 
-/* .justify-space-between {
+.justify-space-between {
     justify-content: space-between;
-} */
+}
 
 .justify-space-around {
     justify-content: space-around;
