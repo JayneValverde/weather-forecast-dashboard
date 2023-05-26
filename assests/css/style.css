@@ -91,7 +91,7 @@ h6 {
 
 .weather-card {
     display:flex;
-    background-color: var(--tertiary);
+    /* background-color: var(--tertiary); */
 }
 
 
