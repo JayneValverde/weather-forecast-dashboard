@@ -25,6 +25,7 @@ var formSubmitHandler = function (event) {
         fcContainerEl.textContent = '';
         cityInputEl.value = '';
         
+        
     }
 
     let allCity  = JSON.parse(localStorage.getItem('city-array')) || [];
