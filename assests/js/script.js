@@ -25,32 +25,36 @@ var formSubmitHandler = function (event) {
         fcContainerEl.textContent = '';
         cityInputEl.value = '';
         
-        
-    }
-
-    let allCity  = JSON.parse(localStorage.getItem('city-array')) || [];
-    console.log();
-    allCity.push(cityname);
-
-    localStorage.setItem("city-array", JSON.stringify(allCity));
-
-    for (let i = 0; i < allCity.length; i++) {
-        let button = document.createElement("button");
-        button.appendChild(card);
-        document.body.appendChild(button)
-        button.textContent = allCity[i];
-        button.addEventListener("click, searchCity")
-        document.querySelector(".display-cityname").appendChild(button);
     }
     
-    function searchCity(event) {
-        event.preventDefault();
-        alert(event.target.innerText);
-    }
+    let allCity  = JSON.parse(localStorage.getItem('city-array')) || [];
+    console.log(allCity.length);
+    allCity.push(cityname);
 
+    localStorage.setItem('city-array', JSON.stringify(allCity));
+
+    searchCityButtons();
 };
 
+// ----------------------------------------
+function searchCityButtons() {
+    var allCity = JSON.parse(localStorage.getItem('city-array')) || [];
 
+    var displayCitynameEl = document.querySelector("#display-cityname");
+    displayCitynameEl.innerHTML = "";
+
+    for (let i = 0; i < allCity.length; i++) {
+        var button = document.createElement("button");
+        button.textContent = allCity[i];
+        button.addEventListener("click", searchCity);
+        displayCitynameEl.appendChild(button);
+    }
+}
+
+function searchCity(event) {
+    event.preventDefault();
+    alert(event.target.innerText);
+}
 
 console.log(`This will show the API key: ${APIKEY}`)
 
@@ -184,10 +188,7 @@ var weekAPI = function (cityname) {
     }
 
 
-// local storage
-
-
-
-
     userFormEl.addEventListener('submit', formSubmitHandler);
     // console.log('button cicked');
+
+    window.addEventListener("load", searchCityButtons);
