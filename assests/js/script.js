@@ -123,8 +123,10 @@ var weekAPI = function (cityname) {
         });
 }
 
+    // loop to display 5 day for cast
     var displayweekData = function (forecastData, fcSearchTerm) {
-        for (i = 4; i < forecastData.list.length; i=i+4) {
+        forecastContainerEl.textContent = "";
+        for (i = 7; i < forecastData.list.length; i=i+7) {
 
             // CREATE ELEMENTS FOR DATA TO LIVE -----------------
             

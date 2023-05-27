@@ -148,9 +148,13 @@ h6 {
     text-transform: uppercase;
 }
 
-.row {
-    padding-left:340px;
-}
+/* .row {
+    padding-left:181px;
+} */
+
+/* #savedSearch {
+    padding-left: 35px;
+} */
 
 /* FLEX CONTENT */
 .flex-row {
