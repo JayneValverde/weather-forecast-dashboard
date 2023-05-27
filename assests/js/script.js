@@ -181,7 +181,7 @@ var weekAPI = function (cityname) {
             fcSearchTerm.textContent = fcSearchTerm;
         } else {
             var cityEl = document.createElement('p');
-            cityEl.textContent = location[0].name;
+            cityEl.textContent = location[0].cityname;
             fcContainerEl.append(cityEl);
 
         }
