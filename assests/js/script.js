@@ -5,11 +5,13 @@ var userFormEl = document.querySelector('#user-form');
 var cityInputEl = document.querySelector('#cityname');
 var fcContainerEl = document.querySelector('#forecast-container');
 var fcSearchTerm = document.querySelector('#forecast-search-term');
+
 var forecastContainerEl = document.querySelector("#weather-card");
 
 var tempEl = document.querySelector('#Temperature');
 var windEl = document.querySelector('#Wind');
 var humidEl = document.querySelector('#Humidity');
+
 var card = document.querySelector('#card-column');
 
 // Event handler for city submition
@@ -122,7 +124,6 @@ var weekAPI = function (cityname) {
             }
         });
 }
-
     // loop to display 5 day for cast
     var displayweekData = function (forecastData, fcSearchTerm) {
         forecastContainerEl.textContent = "";
@@ -141,17 +142,28 @@ var weekAPI = function (cityname) {
             humid.textContent = "Humidity: " + forecastData.list[i].main.humidity + "%";
             winSpeed.textContent = "Wind Speed: " + forecastData.list[i].wind.speed + "mph";
 
-            var cards = document.createElement("div"); 
-            cards.setAttribute("class", "card");
-            cards.setAttribute("style", "width: 18rem;");
-            cards.appendChild(date);
-            cards.appendChild(temperature);
-            cards.appendChild(humid);
-            cards.appendChild(winSpeed);
+
+            var cards = document.querySelector("#weather-container"); 
+            var row = document.querySelector("#weather-row");
+            // cards.setAttribute("class", "card");
+            // cards.setAttribute("style", "width: 18rem;");
+                cards.appendChild(row);
+                cards.appendChild(date);
+                cards.appendChild(temperature);
+                cards.appendChild(humid);
+                cards.appendChild(winSpeed);
+            
+            // var cards = document.createElement("weather-card"); 
+            // cards.setAttribute("class", "card");
+            // // cards.setAttribute("style", "width: 18rem;");
+            // cards.appendChild(date);
+            // cards.appendChild(temperature);
+            // cards.appendChild(humid);
+            // cards.appendChild(winSpeed);
 
             // APPEND DATA TO HTML VARIABLES -----------------
-            forecastContainerEl.append(cards);
-            forecastContainerEl.append(date);
+            forecastContainerEl.append(row);
+            forecastContainerEl.appendchild(date);
             forecastContainerEl.append(temperature);
             forecastContainerEl.append(humid);
             forecastContainerEl.append(winSpeed);  
@@ -176,7 +188,7 @@ var weekAPI = function (cityname) {
     }
 
     // Display city location 
-    var displayLocation = function (location, searchTerm) {
+    var displayLocation = function (location, fcSearchTerm) {
         if (!location) {
             fcContainerEl.textContent = "No Weather Found";
             return;

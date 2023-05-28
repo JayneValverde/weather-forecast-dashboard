@@ -40,6 +40,14 @@ h6 {
     line-height: 1.5;
 }
 
+#search-term {
+    background-color: var(--secondary);
+    margin: 0 0 20px 0;
+    border: 1px solid var(--dark);
+    border-radius: var(--border-radius);
+}
+
+
 .btn {
     font-size: 1.3rem;
     text-decoration: none;
@@ -89,15 +97,15 @@ h6 {
 
 /* CARDS */
 .card {
+    
     margin: 0 0 20px 0;
-    border: 2px solid var(--dark);
+    border: 1px solid var(--dark);
     border-radius: var(--border-radius);
 }
 
 
 /* .weather-card {
     display:flex;
-    /* background-color: var(--tertiary); */
 } */
 
 
@@ -106,10 +114,10 @@ h6 {
     background-color: var(--dark);
     padding: 1.5%;
     border-radius: calc(.13rem - 1px) calc(.18rem - 1px) 0 0;
-    ;
 }
 
 .card-body {
+    background-color:var(--secondary);
     padding: 2.5%
 }
 
@@ -203,7 +211,7 @@ h6 {
 }
 
 .col-auto {
-    flex-grow: 1;
+    flex-grow: 1x;
 }
 
 .col-1 {

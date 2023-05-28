@@ -21,13 +21,13 @@
 </head>
 
 <body>
-    <header class="flex-column min-100-vh justify-space-around">
+    <header class="flex-column min-100-vh justify-space-around mx-4">
         <h1 class="app-title"><i class="fas fa-cloud-moon-rain"></i> Weather Forecast </h1>
-        <p>Search for your city and find your 5 day weather forecast!</p>
+        <p><br>Search for your city and find your 5 day weather forecast!</p>
     </header>
 
     <main class="flex-row justify-space-around">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 ">
             <!-- search by city card -->
             <div class="card" >
                 <h3 class="card-header text-uppercase">Search by City</h3>
@@ -41,7 +41,7 @@
 
 
         <!-- ID's for Current F -->
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-8" id="search-term">
             <h2 class="subtitle">Showing the current forcast for:
                 <span id="forecast-search-term"> </span>
             </h2>
@@ -54,18 +54,34 @@
 
         <!-- <div class="container"> -->
         
-        <div class ="container col" id="savedSearch">
+        <div class ="container col-4 ml-3 mr-1" id="savedSearch">
             <div class="column">
-                <div class="display-cityname" id="display-cityname"></div>
+                <h3 class="subtitle">SAVED SEARCHES:
+                    <div class="display-cityname" id="display-cityname"></div>
+                </h3>
             </div>
         </div>
         
+        <!-- cards for 5day forecast -->
+        <!-- <div class ="d-flex" id="weather-container">
+            <div class="weather-card d-flex" id="weather-card">
+
+                <div class="weather-date" id="date"> </div>
+                <div class="weather-temp" id="temp"> </div>
+                <div class="weather-humid" id="humid"> </div>
+                <div class="weather-wind" id="winSpeed"> </div>
+                
+            </div>
+        </div> -->
+
 
         <!-- cards for 5day forecast -->
-        <div class ="container">
-            <div class="row ">
-                <div class="col-md-4">
-                    <div class="Weather-Cards" id="weather-card"> </div>
+        <div class ="container  ml-5" id="weather-container">
+            <div class="weather-row" id="weather-row">
+                <div class="col-6 col-md-4">
+                    <div class="Weather-Cards d-flex" id="weather-card">
+                        
+                    </div>
                 </div>
             </div>
         </div>
