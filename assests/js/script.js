@@ -7,6 +7,8 @@ var fcContainerEl = document.querySelector('#forecast-container');
 var fcSearchTerm = document.querySelector('#forecast-search-term');
 
 var forecastContainerEl = document.querySelector("#weather-card");
+var row = document.querySelector("#weather-row");
+
 
 var tempEl = document.querySelector('#Temperature');
 var windEl = document.querySelector('#Wind');
@@ -143,11 +145,11 @@ var weekAPI = function (cityname) {
             winSpeed.textContent = "Wind Speed: " + forecastData.list[i].wind.speed + "mph";
 
 
-            var cards = document.querySelector("#weather-container"); 
-            var row = document.querySelector("#weather-row");
+            var cards = document.createElement("div"); 
+            
             // cards.setAttribute("class", "card");
             // cards.setAttribute("style", "width: 18rem;");
-                cards.appendChild(row);
+                // cards.appendChild(row);
                 cards.appendChild(date);
                 cards.appendChild(temperature);
                 cards.appendChild(humid);
@@ -162,11 +164,11 @@ var weekAPI = function (cityname) {
             // cards.appendChild(winSpeed);
 
             // APPEND DATA TO HTML VARIABLES -----------------
-            forecastContainerEl.append(row);
-            forecastContainerEl.appendchild(date);
-            forecastContainerEl.append(temperature);
-            forecastContainerEl.append(humid);
-            forecastContainerEl.append(winSpeed);  
+            forecastContainerEl.append(cards);
+            // forecastContainerEl.append(date);
+            // forecastContainerEl.append(temperature);
+            // forecastContainerEl.append(humid);
+            // forecastContainerEl.append(winSpeed);  
         }
     }             
 
