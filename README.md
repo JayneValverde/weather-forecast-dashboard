@@ -5,7 +5,7 @@
 ## 5 day weather forecast 
 * Upon launching the APP you are presented with a 'Search by City' input card, and a blank card to the right where you current cities forecast will appear.
 * When you submit your cities name the 'Current Forecast' will populate in the blank card on the right. Displaying the city name, temperature, wind speed and humidity for the day. 
-    * The '5 day forecast' of that city will also populate right below the 'Current Forecast' showing the date, temperature, humidity and wind speed of each corrisponding day. 
+    * The '5 day forecast' of that city will also populate right below the 'Current Forecast' showing the date, temperature, humidity and wind speed of each corrisponding day.
 * As the user searches for new cities, the previous city searches will save into local storage for future reference. 
 
 # Issues with app 
