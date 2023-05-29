@@ -1,6 +1,6 @@
 # Weather Forecast Dashboard
 ## Jayné M. Valverde
-[Link to deployed forecast dashboard]()
+[Link to deployed forecast dashboard](https://jaynevalverde.github.io/weather-forecast-dashboard/)
 
 ## 5 day weather forecast 
 * Upon launching the APP you are presented with a 'Search by City' input card, and a blank card to the right where you current cities forecast will appear.
