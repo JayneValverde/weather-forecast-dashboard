@@ -132,7 +132,7 @@ var weekAPI = function (cityname) {
         for (i = 7; i < forecastData.list.length; i=i+7) {
 
             // CREATE ELEMENTS FOR DATA TO LIVE -----------------
-            var date = document.createElement("h");
+            var date = document.createElement("h5");
             var temperature = document.createElement("h6");
             var humid = document.createElement("h6");
             var winSpeed = document.createElement("h6");  
