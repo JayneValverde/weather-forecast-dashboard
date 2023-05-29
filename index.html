@@ -13,7 +13,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!-- style sheet -->
     <link rel="stylesheet" href="./assests/css/style.css">
@@ -29,7 +30,7 @@
     <main class="flex-row justify-space-around">
         <div class="col-12 col-md-4 ">
             <!-- search by city card -->
-            <div class="card" >
+            <div class="card">
                 <h3 class="card-header text-uppercase">Search by City</h3>
                 <form id="user-form" class="card-body">
                     <label class="form-label" for="cityname"> City Name </label>
@@ -40,7 +41,8 @@
         </div>
 
 
-        <!-- ID's for Current F -->
+
+        <!-- ID's for Current Forecast-->
         <div class="col-12 col-md-8" id="search-term">
             <h2 class="subtitle">Showing the current forcast for:
                 <span id="forecast-search-term"> </span>
@@ -52,60 +54,32 @@
             </div>
         </div>
 
-        <!-- <div class="container"> -->
-        
-        <div class =" col-12 col-md-1 ml-3 " id="savedSearch">
-            <!-- <div class="column"> -->
-                <h3 class="subtitle">SAVED SEARCHES:
-                    <div class="display-cityname" id="display-cityname"></div>
-                </h3>
-            <!-- </div> -->
-        </div>
-        
-        <!-- cards for 5day forecast -->
-        <!-- <div class ="d-flex" id="weather-container">
-            <div class="weather-card d-flex" id="weather-card">
-
-                <div class="weather-date" id="date"> </div>
-                <div class="weather-temp" id="temp"> </div>
-                <div class="weather-humid" id="humid"> </div>
-                <div class="weather-wind" id="winSpeed"> </div>
-                
-            </div>
-        </div> -->
-
-
-        <!-- cards for 5day forecast -->
-        <div class ="container " id="weather-container">
-            <div class="weather-row" id="weather-row">
-                <div class="col-12 col-md-12">
-                    <div class="Weather-Cards d-flex" id="weather-card"> 
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-            
-        
-        <!-- </div> -->
-
-        <!-- ^^^^^^ ORIGINAL ^^^^^^ -->
-        <!-- <div class="d-flex p-5 bd-highlight">
-            <div class="col-12 col-md-4">
-                <div class="Weather-Cards" id="weather-card"> </div>
-            </div>
-        </div> -->
-
-
-        <!-- SAVED CITY SEARCHES -->
-        <!-- <div class="col-12 col-md-4">
-        <div class="col-12 col-md-1">
-            <h3 class="subtitle"> saved searches: </h2>
-        </div> -->
-
-
 
     </main>
+
+    <aside class="d-inline-flex">
+
+        <!-- Saved searches -->
+        <div class="d-flex justify-space-between">
+            </h3>
+            <div class=" col-1 col-md-1 ml-3" id="savedSearch">
+                <div class="display-cityname" id="display-cityname"> </div>
+            </div>
+        </div>
+
+        <!-- cards for 5day forecast -->
+        <div class="container col-12 col-md-8 id=" weather-container">
+            <div class="weather-row" id="weather-row">
+                <!-- <div class="col-12 col-md-12"> -->
+                <div class="Weather-Cards d-inline-flex" id="weather-card">
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+
+
+    </aside>
+
 
     <script src="assests/js/script.js"></script>
 </body>
