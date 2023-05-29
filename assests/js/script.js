@@ -9,7 +9,7 @@ var fcSearchTerm = document.querySelector('#forecast-search-term');
 var forecastContainerEl = document.querySelector("#weather-card");
 var row = document.querySelector("#weather-row");
 
-
+var locEl = document.querySelector('#Location');
 var tempEl = document.querySelector('#Temperature');
 var windEl = document.querySelector('#Wind');
 var humidEl = document.querySelector('#Humidity');
@@ -132,7 +132,6 @@ var weekAPI = function (cityname) {
         for (i = 7; i < forecastData.list.length; i=i+7) {
 
             // CREATE ELEMENTS FOR DATA TO LIVE -----------------
-            
             var date = document.createElement("h");
             var temperature = document.createElement("h6");
             var humid = document.createElement("h6");
@@ -146,43 +145,29 @@ var weekAPI = function (cityname) {
 
 
             var cards = document.createElement("div"); 
-            
-            // cards.setAttribute("class", "card");
-            // cards.setAttribute("style", "width: 18rem;");
-                // cards.appendChild(row);
                 cards.appendChild(date);
                 cards.appendChild(temperature);
                 cards.appendChild(humid);
                 cards.appendChild(winSpeed);
-            
-            // var cards = document.createElement("weather-card"); 
-            // cards.setAttribute("class", "card");
-            // // cards.setAttribute("style", "width: 18rem;");
-            // cards.appendChild(date);
-            // cards.appendChild(temperature);
-            // cards.appendChild(humid);
-            // cards.appendChild(winSpeed);
 
             // APPEND DATA TO HTML VARIABLES -----------------
             forecastContainerEl.append(cards);
-            // forecastContainerEl.append(date);
-            // forecastContainerEl.append(temperature);
-            // forecastContainerEl.append(humid);
-            // forecastContainerEl.append(winSpeed);  
         }
     }             
 
-
     // Display forecast
     var displayForecast = function (forecast, fcSearchTerm) {
+            locEl = document.createElement('h2');
             tempEl = document.createElement('p');
             windEl = document.createElement('p');
             humidEl = document.createElement('p');
+            locEl.textContent = " " + forecast.name + " :";
             tempEl.textContent = "Temperature: " + forecast.main.temp + " F";
             windEl.textContent = "Wind Speed: " + forecast.wind.speed + " Mph";
             humidEl.textContent = "Humidity: " + forecast.main.humidity + "%";
 
             // console.log(forecast);
+            fcContainerEl.append(locEl);
             fcContainerEl.append(tempEl);          
             fcContainerEl.append(windEl);
             fcContainerEl.append(humidEl);
